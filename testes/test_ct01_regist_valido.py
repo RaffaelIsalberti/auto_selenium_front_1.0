@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 
 @pytest.mark.usefixtures("setup_teardown")
 @pytest.mark.skip
-class TestCT001:
-    def test_ct001_regist_valid(self):
+class TestCT0001:
+    def test_ct0001_regist_valid(self):
         driver = conftest.driver
         ##Registro
         driver.find_element(By.XPATH, "//a[@class='ico-register']").click()

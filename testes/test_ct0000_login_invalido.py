@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 
 @pytest.mark.usefixtures("setup_teardown")
 @pytest.mark.skip
-class TestCT0000:
-    def test_ct000_login_inval(self):
+class TestCT00000:
+    def test_ct0000_login_inval(self):
         driver = conftest.driver
         ##LOGIN
         driver.find_element(By.XPATH, "//a[@class='ico-login']").click()

@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 
 @pytest.mark.usefixtures("setup_teardown")
 #@pytest.mark.skip
-class TestCT004:
-    def test_ct004_limp_cart(self):
+class TestCT0004:
+    def test_ct0004_limp_cart(self):
 
         driver = conftest.driver
 

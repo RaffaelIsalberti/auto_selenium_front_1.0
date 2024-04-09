@@ -9,7 +9,7 @@ def setup_teardown():
     #setup
     global driver
     driver = webdriver.Chrome()
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(4)
     driver.maximize_window()
     driver.get("https://demo.nopcommerce.com/")
 

@@ -9,8 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 @pytest.mark.usefixtures("setup_teardown")
-class TestCT003:
-    def test_ct003_loja_valido(self):
+class TestCT0003:
+    def test_ct0003_loja_valido(self):
         driver = conftest.driver
         wait = WebDriverWait(driver, 5)
 
