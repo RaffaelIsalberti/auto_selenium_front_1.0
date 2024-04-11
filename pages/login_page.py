@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 import conftest
 
 class LoginPage:
-    def __init__(self): ##construtor da classe
+    def __init__(self): ##construtor da classes
         self.driver = conftest.driver
     ##LOGIN
     def fazer_login(self, usuario, senha):

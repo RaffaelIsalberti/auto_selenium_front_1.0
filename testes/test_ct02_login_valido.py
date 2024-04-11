@@ -9,7 +9,6 @@ from pages.login_page import LoginPage
 class TestCT0002:
     def test_ct0002_login_val(self):
         driver = conftest.driver
-
         ##LOGIN
         pag_login = LoginPage()
         pag_login.fazer_login("testeraffaelial@gmail.com", "Teste123@")

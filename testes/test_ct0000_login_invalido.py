@@ -9,5 +9,5 @@ class TestCT00000:
 
         ##LOGIN
         pag0_login = LoginPage()
-        pag0_login.fazer_login('testeraffaelial@gmail.com', 'Tesxxxxx@')
+        pag0_login.fazer_login('testeraffaelial@gmail.com', 'Tesxxooxxx@')
 

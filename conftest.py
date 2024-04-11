@@ -12,6 +12,7 @@ def setup_teardown():
     driver.maximize_window()
     driver.get("https://demo.nopcommerce.com/")
 
+
     #run test
     yield
 

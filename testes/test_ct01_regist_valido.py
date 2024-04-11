@@ -43,5 +43,5 @@ class TestCT0001:
         driver.find_element(By.XPATH, "//button[@id='register-button']").click()
         confirm_register = driver.find_element(By.XPATH, "//div[@class='result']")
 
-        print('Registro confirmado',confirm_register.is_displayed())
+        print('Registroo confirmado',confirm_register.is_displayed())
         assert confirm_register.is_displayed()

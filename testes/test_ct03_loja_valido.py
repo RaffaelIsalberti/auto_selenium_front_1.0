@@ -89,7 +89,7 @@ class TestCT0003:
 
         driver.find_element(By.ID, "CountryId").click()
         driver.find_element(By.XPATH, "//option[text()='Brazil']").click()
-        time.sleep(2)
+        time.sleep(3)
         #sel_country = driver.find_element(By.XPATH, "//option[text()='Brazil']")
         #actions.scroll_to_element(sel_country).perform()
         #actions.click(sel_country).perform()
