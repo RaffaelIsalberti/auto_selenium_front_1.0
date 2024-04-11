@@ -1,6 +1,5 @@
 import pytest
 from selenium import webdriver
-
 driver: webdriver.Remote
 
 

@@ -2,21 +2,17 @@ import pytest
 import conftest
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
+from pages.login_page import LoginPage
 
 
 @pytest.mark.usefixtures("setup_teardown")
-#@pytest.mark.skip
+@pytest.mark.skip
 class TestCT0004:
     def test_ct0004_limp_cart(self):
-
         driver = conftest.driver
-
         ##LOGIN
-        driver.find_element(By.XPATH, "//a[@class='ico-login']").click()
-        driver.find_element(By.XPATH, "//input[@class='email']").send_keys('testeraffaelial@gmail.com')
-        driver.find_element(By.XPATH, "//input[@class='password']").send_keys('Teste123@')
-        driver.find_element(By.XPATH, "//button[text() ='Log in']").click()
-
+        pag2_login = LoginPage()
+        pag2_login.fazer_login("testeraffaelial@gmail.com", "Teste123@")
 
         ##FUNÇÃO MOUSE HOVER - MOUSE FLUTUANTE
         actions = ActionChains(driver)
