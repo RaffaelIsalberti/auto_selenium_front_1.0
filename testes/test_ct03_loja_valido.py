@@ -71,7 +71,6 @@ class TestCT0003:
         ##ADICIONAR ITEM
         driver.find_element(By.ID, "add-to-cart-button-20").click()
 
-
         ##FECHAR MENSAGEM
         assert driver.find_element(By.XPATH, "//p[text()= 'The product has been added to your ']").is_displayed()
         driver.find_element(By.XPATH, "//span[@class='close']").click()
@@ -81,15 +80,22 @@ class TestCT0003:
         driver.find_element(By.XPATH, "//button[@class='button-1 cart-button']").click()
 
         #ESTIMAR ENVIO
+        time.sleep(2)
         env_fret = driver.find_element(By.ID, "open-estimate-shipping-popup")
-        actions.scroll_to_element(env_fret).perform()
+        #actions.scroll_to_element(env_fret).perform()
         actions.move_to_element(env_fret).perform()
         actions.click(env_fret).perform()
         time.sleep(2)
 
+        #FECHAR COMPRA
         driver.find_element(By.ID, "CountryId").click()
         driver.find_element(By.XPATH, "//option[text()='Brazil']").click()
-        time.sleep(3)
+        driver.find_element(By.ID, "ZipPostalCode").send_keys("38400040")
+        driver.find_element(By.XPATH, "//div[@class='estimate-shipping-row-item shipping-item' and text() = 'Next Day Air']").click()
+        driver.find_element(By.XPATH, "//button[@class= 'button-2 apply-shipping-button']").click()
+        driver.find_element(By.ID, "termsofservice").click()
+        driver.find_element(By.ID, "checkout").click()
+
         #sel_country = driver.find_element(By.XPATH, "//option[text()='Brazil']")
         #actions.scroll_to_element(sel_country).perform()
         #actions.click(sel_country).perform()
