@@ -14,7 +14,5 @@ class TestCT0002:
 
         ##LOGIN teste login
         pag_login = LoginPage()
-        time.sleep(2)
         pag_login.fazer_login("testeraffaelial@gmail.com", "Teste123@")
-        time.sleep(2)
         assert driver.find_element(By.XPATH, "// h2[text() = 'Welcome to our store']")
