@@ -3,6 +3,10 @@
 
 
 
-https://github.com/RaffaelIsalberti/auto_selenium_front_1.0/assets/156975953/a49a9123-8c4d-4064-876d-30d1dfdd2ef9
+https://github.com/RaffaelIsalberti/auto_selenium_front_1.0/assets/156975953/d443f987-a47a-4729-a24a-1d4933a3b427
+
+
+
+
 
 
