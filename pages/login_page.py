@@ -18,7 +18,3 @@ class LoginPage(BasePage):
         self.writer(self.username_field, usuario)
         self.writer(self.password_field, senha)
         self.cliq(self.login_button)
-        #self.driver.find_element(*self.field_users).click()
-        #self.driver.find_element(*self.username_field).send_keys(usuario)
-        #self.driver.find_element(*self.password_field).send_keys(senha)
-        #self.driver.find_element(*self.login_button).click()
