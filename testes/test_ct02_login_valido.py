@@ -12,9 +12,8 @@ class TestCT0002:
     def test_ct0002_login_val(self):
         driver = conftest.driver
 
-        ##LOGIN teste login
+        ##LOGIN
         pag_login = LoginPage()
-        time.sleep(2)
+        time.sleep(1)
         pag_login.fazer_login("testeraffaelial@gmail.com", "Teste123@")
-        time.sleep(2)
         assert driver.find_element(By.XPATH, "// h2[text() = 'Welcome to our store']")
