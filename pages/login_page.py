@@ -1,9 +1,8 @@
 from selenium.webdriver.common.by import By
 import conftest
-from pages.base_page import BasePage
 
 
-class LoginPage(BasePage):
+class LoginPage():
 
     def __init__(self):
         self.driver = conftest.driver
@@ -14,7 +13,7 @@ class LoginPage(BasePage):
 
     ##LOGIN -- melhorar com base page
     def fazer_login(self, usuario, senha):
-        self.cliq(self.field_users)
-        self.writer(self.username_field, usuario)
-        self.writer(self.password_field, senha)
-        self.cliq(self.login_button)
+        self.driver.find_element(*self.field_users).click()
+        self.driver.find_element(*self.username_field).send_keys(usuario)
+        self.driver.find_element(*self.password_field).send_keys(senha)
+        self.driver.find_element(*self.login_button).click()
