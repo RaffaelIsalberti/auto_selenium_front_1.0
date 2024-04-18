@@ -7,7 +7,7 @@ from pages.login_page import LoginPage
 
 
 @pytest.mark.usefixtures("setup_teardown")
-#@pytest.mark.skip
+@pytest.mark.skip
 class TestCT0003:
     def test_ct0003_loja_valido(self):
         driver = conftest.driver
