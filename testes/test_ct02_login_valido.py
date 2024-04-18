@@ -1,18 +1,17 @@
 import pytest
-import conftest
-from selenium.webdriver.common.by import By
 from pages.login_page import LoginPage
+from pages.home_page import HomePage
 
 
 @pytest.mark.usefixtures("setup_teardown")
 #@pytest.mark.skip
 class TestCT0002:
     def test_ct0002_login_val(self):
-        driver = conftest.driver
         pag_login = LoginPage()
+        pag_home = HomePage()
 
         ##LOGIN
         pag_login.fazer_login("testeraffaelial@gmail.com", "Teste123@")
 
         #VALIDAR LOGIN
-        assert driver.find_element(By.XPATH, "// h2[text() = 'Welcome to our store']").is_displayed()
+        pag_home.valid_home_pag()
