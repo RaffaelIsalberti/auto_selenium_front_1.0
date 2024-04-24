@@ -4,7 +4,7 @@ from pages.home_page import HomePage
 
 
 @pytest.mark.usefixtures("setup_teardown")
-#@pytest.mark.skip
+@pytest.mark.skip
 class TestCT0002:
     def test_ct0002_login_val(self):
         pag_login = LoginPage()

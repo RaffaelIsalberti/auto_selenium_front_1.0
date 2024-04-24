@@ -22,8 +22,10 @@ class TestCT0004:
         driver.find_element(By.XPATH, "//button[@class='button-1 cart-button']").click()
 
         #LIMPAR CARRINHO
-        limpar_compra = driver.find_element(By.XPATH, "//button[@class='remove-btn']")
-        actions.click(limpar_compra).perform()
+        clean_shop = driver.find_element(By.XPATH, "//button[@class='remove-btn']")
+        actions.click(clean_shop).perform()
+        clean_shop1 = driver.find_element(By.XPATH, "//button[@class='remove-btn']")
+        actions.click(clean_shop1).perform()
 
         log_out = driver.find_element(By.XPATH, "//a[text() = 'Log out']")
         actions.click(log_out).perform()

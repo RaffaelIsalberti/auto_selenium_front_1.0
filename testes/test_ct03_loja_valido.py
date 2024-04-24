@@ -3,39 +3,31 @@ import pytest
 import conftest
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
+from pages.home_page import HomePage
 from pages.login_page import LoginPage
 
 
 @pytest.mark.usefixtures("setup_teardown")
-@pytest.mark.skip
+#@pytest.mark.skip
 class TestCT0003:
     def test_ct0003_loja_valido(self):
         driver = conftest.driver
+        pag_login = LoginPage()
+        home_page = HomePage()
 
         ##LOGIN
-        pag1_login = LoginPage()
-        pag1_login.fazer_login('testeraffaelial@gmail.com', 'Teste123@')
+        pag_login.fazer_login('testeraffaelial@gmail.com', 'Teste123@')
 
-        #ACTION EM VARIAVEL
+        # ACTION EM VARIAVEL
         actions = ActionChains(driver)
 
         ##FUNÇÃO MOUSE HOVER - MOUSE FLUTUANTE
-        comp_tracker = driver.find_element(By.XPATH, "//a[text() ='Computers ']")
-        actions.move_to_element(comp_tracker).perform()
-        desk_tracker = driver.find_element(By.XPATH, "//a[text() ='Desktops ']")
-        actions.move_to_element(desk_tracker).perform()
-        note_tracker = driver.find_element(By.XPATH, "//a[text() ='Notebooks ']")
-        actions.move_to_element(note_tracker).perform()
+        home_page.move_to_sessao()
+        home_page.sel_opc_prod()
 
         ##NAVEGAÇÃO LOJA NOTEBOOK
-        actions.click(note_tracker).perform()
-        #driver.find_element(By.XPATH, "//a[text() ='Notebooks ']").click()
-        product0 = driver.find_element(By.ID, 'attribute-option-7')
-        actions.click(product0).perform()
-        time.sleep(2)
-        product1 = driver.find_element(By.XPATH, "//h2/a[text() = 'Asus N551JK-XO076H Laptop']")
-        actions.click(product1).perform()
-
+        home_page.marca_opc()
+        home_page.add_ao_cart()
 
         ##FUNÇÃO DOUBLE CLICK MOUSE e SCROLL
         #limpar campo de quantidade para preenchimento
@@ -57,16 +49,11 @@ class TestCT0003:
         actions.scroll_to_element(shop_cart).perform()
         actions.move_to_element(shop_cart).perform()
         driver.find_element(By.XPATH, "//button[@class='button-1 cart-button']").click()
-        #assert driver.find_element(By.XPATH, "//h1[text() = 'Shopping cart']").is_displayed()
 
         ##MOUSE HOPER LOJA ELETRONICOS
-        eletroni_tracker = driver.find_element(By.XPATH, "//ul[1]/li[2]/a[text()='Electronics ']")
-        actions.move_to_element(eletroni_tracker).perform()
-        cell_tracker = driver.find_element(By.XPATH, "//div[2]/ul[1]/li[2]/ul/li[2]/a[text()='Cell phones ']")
-        actions.move_to_element(cell_tracker).perform()
-        actions.click(cell_tracker).perform()
-        product2 = driver.find_element(By.XPATH, "//h2/a[text()='Nokia Lumia 1020']")
-        actions.click(product2).perform()
+        home_page.mover_ao_cart()
+        home_page.mover_ao_prod()
+        home_page.add_ao_cart2('Nokia Lumia 1020')
 
         ##ADICIONAR ITEM
         driver.find_element(By.ID, "add-to-cart-button-20").click()
@@ -95,8 +82,4 @@ class TestCT0003:
         driver.find_element(By.XPATH, "//button[@class= 'button-2 apply-shipping-button']").click()
         driver.find_element(By.ID, "termsofservice").click()
         driver.find_element(By.ID, "checkout").click()
-
-        #sel_country = driver.find_element(By.XPATH, "//option[text()='Brazil']")
-        #actions.scroll_to_element(sel_country).perform()
-        #actions.click(sel_country).perform()
 
