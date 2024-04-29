@@ -1,7 +1,7 @@
 import time
 import pytest
 import conftest
-from selenium.webdriver import ActionChains, Keys
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
@@ -26,16 +26,14 @@ class TestCT0003:
         home_page.sel_opc_prod()
 
         ##NAVEGAÇÃO LOJA NOTEBOOK
-        home_page.marca_opc()
-        home_page.add_ao_cart()
+        home_page.buy_product()
+        # home_page.marca_opc()
+        # time.sleep(2)
+        # home_page.add_ao_cart()
 
         ##FUNÇÃO DOUBLE CLICK MOUSE e SCROLL
         #limpar campo de quantidade para preenchimento
-        camp_valor = driver.find_element(By.ID, "product_enteredQuantity_5")
-        actions.scroll_to_element(camp_valor).perform()
-        actions.double_click(camp_valor).perform()
-        camp_valor.send_keys(Keys.DELETE)
-        camp_valor.send_keys('2')
+        home_page.find_field_qtd()
 
         ##ADICIONAR ITEM
         driver.find_element(By.ID, "add-to-cart-button-5").click()
@@ -51,9 +49,10 @@ class TestCT0003:
         driver.find_element(By.XPATH, "//button[@class='button-1 cart-button']").click()
 
         ##MOUSE HOPER LOJA ELETRONICOS
-        home_page.mover_ao_cart()
-        home_page.mover_ao_prod()
-        home_page.add_ao_cart2('Nokia Lumia 1020')
+        home_page.shop_eletrc()
+        # home_page.mover_ao_cart()
+        # home_page.mover_ao_prod()
+        # home_page.add_ao_cart2('Nokia Lumia 1020')
 
         ##ADICIONAR ITEM
         driver.find_element(By.ID, "add-to-cart-button-20").click()
