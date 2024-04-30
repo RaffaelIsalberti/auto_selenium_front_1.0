@@ -17,17 +17,32 @@ class HomePage(BasePage):
 
         #adicionar primeiro produto sessão de computadores
         self.check_opc = (By.ID, 'attribute-option-7')
-        #self.prod_sh1 = (By.XPATH, "//*[contains(text(), 'Asus N551JK-XO076H Laptop')]")
-        #self.prod_sh1 = (By.XPATH, "//h2[@class='product-title']/a[text()='Asus N551JK-XO076H Laptop']")
         self.prod_sh1 = (By.CSS_SELECTOR, "h2.product-title > a[href$='asus-n551jk-xo076h-laptop']")
 
         #SELECIONAR CAMPO QUANTIDADE
         self.check_qtd = (By.ID, "product_enteredQuantity_5")
 
+        #MOVER MOUSE
+        self.mover_cart = (By.XPATH, "//span[text()= 'Shopping cart']")
+        self.inside_cart = (By.XPATH, "//button[@class='button-1 cart-button']")
+
         #adicionar segundo produto sessão de eletronicos
         self.opc_shop1 = (By.XPATH, "//ul[1]/li[2]/a[text()='Electronics ']")
         self.prod_sh2 = (By.XPATH, "//div[2]/ul[1]/li[2]/ul/li[2]/a[text()='Cell phones ']")
         self.prod_shop2 = (By.XPATH, "//h2/a[text()='Nokia Lumia 1020']")
+        self.sel_prod = (By.ID, "add-to-cart-button-20")
+
+        #ENVIO PRODUTO
+        self.fret_prod = (By.ID, "open-estimate-shipping-popup")
+
+        # FECHAR COMPRA
+        self.opc_country = (By.ID, "CountryId")
+        self.sel_country = (By.XPATH, "//option[text()='Brazil']")
+        self.add_zip = (By.ID, "ZipPostalCode")
+        self.check_type = (By.XPATH, "//*[text() = 'Next Day Air']")
+        self.check_fret = (By.XPATH, "//button[@class= 'button-2 apply-shipping-button']")
+        self.check_term = (By.ID, "termsofservice")
+        self.che_out_ok = (By.ID, "checkout")
 
     def valid_home_pag(self):
         self.disp_valid(self.valid_home)
@@ -44,7 +59,6 @@ class HomePage(BasePage):
     def buy_product(self):
         self.marca_opc()
         self.add_ao_cart()
-       # self.wait_add_to_cart()
 
     def marca_opc(self):
         self.cliq(self.check_opc)
@@ -77,11 +91,17 @@ class HomePage(BasePage):
         self.writer(self.check_qtd, qtd)
         pass
 
+#ACESSAR CART
+    def aces_cart(self):
+        self.move_to_element(self.mover_cart)
+        self.cliq(self.inside_cart)
+
 #NAVEGAÇÃO LOJA ELETRONICOS
     def shop_eletrc(self):
         self.mover_ao_cart()
         self.mover_ao_prod()
         self.add_prod_ao_cart2('Nokia Lumia 1020')
+        self.clic_prod()
 
     def mover_ao_cart(self):
         self.move_to_element(self.opc_shop1)
@@ -96,3 +116,22 @@ class HomePage(BasePage):
         product = (self.prod_shop2[0], self.prod_shop2[1].format(nome_prod2))
         self.cliq(product)
         pass
+
+    def clic_prod(self):
+        self.cliq(self.sel_prod)
+        pass
+
+    #FRETE DO PRODUTO
+    def calc_fret(self):
+        self.move_to_element(self.fret_prod)
+        self.cliq(self.fret_prod)
+
+    #FECHAR COMPRA
+    def checkout_shop(self):
+        self.cliq(self.opc_country)
+        self.cliq(self.sel_country)
+        self.writer(self.add_zip, "38400040")
+        self.cliq(self.check_type)
+        self.cliq(self.check_fret)
+        self.cliq(self.check_term)
+        self.cliq(self.che_out_ok)
